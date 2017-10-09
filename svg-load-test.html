@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <svg id='test'>
+      <rect id="testRect" x="10" y="10" fill="orange" width="10" height="40" />
+    </svg>
+  </body>
+  <script>
+    rect = document.getElementById('testRect');
+    recWidth = 10;
+    function reloading() {
+      rect.setAttribute("width",`${recWidth}`);
+      recWidth = recWidth + 1;
+      setTimeout("reloading()", 50);
+    };
+    reloading();
+  </script>
+</html>
