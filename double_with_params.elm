@@ -19,7 +19,7 @@ main =
 
 
 gravity =
-    -500
+    -200
 
 
 length1 =
@@ -427,10 +427,11 @@ update msg model =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     case model.isPaused of
-        -- False -> Time.every (dt * second) Tick
         False ->
-            AnimationFrame.diffs Tick
+            Time.every (dt * second) Tick
 
+        -- False ->
+        --     AnimationFrame.diffs Tick
         True ->
             Sub.none
 
@@ -467,7 +468,7 @@ listTail list =
 
 view : Model -> Html.Html Msg
 view model =
-    Html.div []
+    Html.div [ Html.Attributes.style [ ( "width", "900px" ), ( "margin", "auto" ) ] ]
         [ Html.div
             [ Html.Attributes.style [ ( "float", "left" ) ]
             ]
@@ -481,7 +482,7 @@ view model =
                 )
             ]
         , Html.fieldset
-            [ Html.Attributes.style [ ( "float", "left" ), ( "width", "250px" ) ]
+            [ Html.Attributes.style [ ( "position", "absolute" ), ( "width", "250px" ) ]
             ]
             [ Html.legend [] [ Html.text "Manupulations" ]
             , Html.table [ Html.Attributes.style [ ( "padding-left", "20px" ), ( "padding-right", "20px" ) ] ]
